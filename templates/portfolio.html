@@ -1,0 +1,49 @@
+<!-- templates/portfolio.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Portfolio</title>
+    <script>
+      // Function to fetch and display portfolio data
+      function fetchAndDisplayPortfolio() {
+        fetch("/portfolio_symbols")
+          .then((response) => response.json())
+          .then((portfolio) => {
+            const portfolioDiv = document.getElementById("portfolio");
+            portfolioDiv.innerHTML = ""; // Clear "Loading" text or any previous content
+            portfolio.forEach((stock) => {
+              // Create elements for each stock's info and append to portfolioDiv
+              const stockElement = document.createElement("div");
+              stockElement.innerHTML = `<h2>${stock.ticker} - Quantity: ${stock.quantity}</h2>`;
+
+              // Calculate the date two weeks ago
+              const twoWeeksAgo = new Date();
+              twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+
+              // For each stock, list out the details from the last two weeks
+              const detailsList = document.createElement("ul");
+              Object.entries(stock.data).forEach(([date, data]) => {
+                const dataDate = new Date(date);
+                if (dataDate >= twoWeeksAgo) {
+                  const listItem = document.createElement("li");
+                  listItem.textContent = `Date: ${date}, Open: ${data["1. open"]}, High: ${data["2. high"]}, Low: ${data["3. low"]}, Close: ${data["4. close"]}, Volume: ${data["5. volume"]}`;
+                  detailsList.appendChild(listItem);
+                }
+              });
+              stockElement.appendChild(detailsList);
+              portfolioDiv.appendChild(stockElement);
+            });
+          })
+          .catch((error) =>
+            console.error("Error fetching portfolio data:", error)
+          );
+      }
+    </script>
+  </head>
+  <body onload="fetchAndDisplayPortfolio();">
+    <h1>Welcome to LISTOCK!</h1>
+    <div id="portfolio">Loading portfolio...</div>
+  </body>
+</html>
