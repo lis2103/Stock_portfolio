@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, request, render_template
 import requests
 
@@ -71,6 +72,5 @@ def get_weekly_series(ticker):
    
   
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     app.run(debug=True)
-
