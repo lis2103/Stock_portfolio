@@ -1,0 +1,13 @@
+{
+  "user_id": "PANTELIS",
+  "user_name": "VR13",
+  "portfolios": [
+    {
+      "portfolio_id": "portfolio1",
+      "items": [
+        { "ticker": "AAPL", "quantity": 10, "purchase_price": 180 },
+        { "ticker": "GOOGL", "quantity": 5, "purchase_price": 2700 }
+      ]
+    }
+  ]
+}
