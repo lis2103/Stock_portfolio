@@ -4,32 +4,34 @@ from sqlalchemy.schema import Identity
 from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
-
+#i used chat.gpt to implement the right logic and asjust it to my code 
 class Users(db.Model):
-    user_id = db.Column(db.String(255), primary_key=True)
-    password = db.Column(db.String(255), nullable=False)
-    user_name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False)
+    __tablename__ = 'users'  
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(255), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)  # Added email field
+    stocks = db.relationship('Stock', backref='owner', lazy='dynamic')
 
     def dict(self):
         return {
-            'user_id': self.user_id,
-            'password': self.password,
+            'id': self.id,
+            'password': self.password_hash,
             'user_name': self.user_name,
-            'user_mail': self.emailmail
+            'user_mail': self.email
         }
     
     
 class Stocks(db.Model):
-    stock_id = db.Column(db.String(255), primary_key=True)
-    user_id = db.Column(db.String(255), db.ForeignKey('users.user_id'), nullable=False)
+    __tablename__ = 'stocks'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     ticker = db.Column(db.String(255), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
-    user = relationship('Users', backref='user_stocks')
 
     def dict(self):
         return {
-            'stock_id': self.stock_id,
+            'id': self.id,
             'user_id': self.user_id,
             'ticker': self.ticker,
             'quantity': self.quantity,
