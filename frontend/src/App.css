@@ -1,25 +1,26 @@
-.App-header {
+/* src/App.css */
+
+.App {
   text-align: center;
 }
 
-.symbol-list {
-  list-style-type: none;
-  padding: 0;
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.symbol-list li {
-  cursor: pointer;
-  color: blue;
-  text-decoration: underline;
+main {
+  display: flex;
+  justify-content: space-around;
 }
 
-.symbol-details {
-  margin-top: 20px;
-}
-
-.week-data {
-  background-color: #f0f0f0;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+.details-section {
+  display: flex;
+  flex-direction: column;
 }
