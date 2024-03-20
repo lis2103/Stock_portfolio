@@ -179,32 +179,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-#This is for passing hard coded examples to the database
-# def create_and_insert_user():
-#     # Create a new user instance with hardcoded values
-#     new_user = Users(
-#         user_id='user143',  # This should be unique for each user
-#         password=generate_password_hash('password123', method='sha256'),
-#         user_name='John Doe',
-#         email='johndoe@example.com'
-#     )
-#     db.session.add(new_user)  # Add the new user to the session
 
-#     # Create hardcoded stock instances associated with the new user
-#     stock1 = Stocks(
-#         stock_id='stock123',  # This should be unique for each stock
-#         user_id=new_user.user_id,  # Associate this stock with the newly created user
-#         ticker='AAPL',
-#         quantity=10
-#     )
-
-#     stock2 = Stocks(
-#         stock_id='stock124',  # This should be unique for each stock
-#       
-# if __name__ == '__main__':
-#     # with app.app_context():
-#     #     create_and_insert_user()
-#     app.run(debug=True)
 
 
 
