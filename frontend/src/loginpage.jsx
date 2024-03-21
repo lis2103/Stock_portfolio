@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     try {
       const response = await fetch(
-        "https://mcsbt-integration-vr.ew.r.appspot.com/login",
+        "https://mcsbt-integration-416413.lm.r.appspot.com/login",
         {
           method: "POST",
           headers: {
@@ -116,7 +116,7 @@ const LoginPage = () => {
           continue
         </Button>
         <p style={{ color: "green", marginTop: "15px", fontSize: "13px" }}>
-          Not registered? Register{" "}
+          Register{" "}
           <Link
             to="/register"
             style={{ color: "inherit", textDecoration: "inherit" }}

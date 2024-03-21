@@ -150,7 +150,7 @@ const RegisterPage = () => {
           Register
         </Button>
         <p style={{ marginTop: "15px", fontSize: "13px" }}>
-          Already registered? Login{" "}
+          Login{" "}
           <Link
             to="/login"
             style={{ color: "inherit", textDecoration: "none" }}

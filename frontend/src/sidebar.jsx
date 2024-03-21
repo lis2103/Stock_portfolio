@@ -54,7 +54,6 @@ export default function Sidebar() {
   };
 
   const handleQuantityChange = (e) => {
-    // Define handleQuantityChange at the component level
     const value = e.target.value.replace(/[^0-9]/g, "");
     setQuantity(value);
   };
@@ -141,30 +140,28 @@ export default function Sidebar() {
               transform: "translateY(-50%)",
             }}
           >
-            <div
+            <Button
+              color="error"
+              auto
+              ghost
               style={{
                 position: "absolute",
                 top: "50%",
-                transform: "translateY(-50%) translateX(-10%)",
-                right: "0",
-                padding: "0px",
-                fontSize: "20px",
-                fontWeight: "normal",
+                transform: "translateY(-50%)",
                 opacity: hoverIndex === index ? 1 : 0,
                 transition: "opacity 0.3s ease-in-out",
-                cursor: "pointer", // Add cursor pointer
               }}
               onClick={() => {
                 const isConfirmed = window.confirm(
-                  `Would you like to remove the ticker ${item.ticker}?`
+                  `Are you sure you want to remove the ticker ${item.ticker}?`
                 );
                 if (isConfirmed) {
                   handleRemoveStock(item.ticker);
                 }
               }}
             >
-              ✕
-            </div>
+              Remove
+            </Button>
           </div>
 
           <Card
@@ -198,71 +195,60 @@ export default function Sidebar() {
         <Button fullWidth onClick={() => setShowSearchBox(!showSearchBox)}>
           Add stock
         </Button>
-        <div
-          style={{
-            opacity: showSearchBox ? 1 : 0,
-            visibility: showSearchBox ? "visible" : "hidden",
-            transition: "opacity 0.3s ease-in-out, visibility 0.3s",
-            width: "200px",
-            marginTop: "15px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0px",
-          }}
-        >
-          <input
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter a stock"
+        {showSearchBox && (
+          <div
             style={{
-              fontSize: "14px",
-              borderRadius: "10px 10px 0 0", // Round top corners, straight bottom corners
-              border: "1px solid #ccc",
-              padding: "5px 10px",
-              boxSizing: "border-box",
+              opacity: 1,
+              visibility: "visible",
+              transition: "opacity 0.3s ease-in-out, visibility 0.3s",
               width: "200px",
+              marginTop: "15px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "10px",
             }}
-          />
-
-          <input
-            type="text"
-            value={quantity}
-            onChange={handleQuantityChange}
-            placeholder="Quantity"
-            style={{
-              fontSize: "14px",
-              borderRadius: "0", // Completely rectangular
-              borderTop: "0", // Remove top border to eliminate space
-              borderLeft: "1px solid #ccc",
-              borderRight: "1px solid #ccc",
-              borderBottom: "1px solid #ccc",
-              padding: "5px 10px",
-              boxSizing: "border-box",
-              width: "200px",
-            }}
-          />
-
-          <Button
-            onClick={handleAddStock} // Add onClick handler for adding stock
-            style={{
-              borderRadius: "0 0 10px 10px", // Straight top corners, rounded bottom corners
-              padding: "5px 10px",
-              boxSizing: "border-box",
-              width: "200px",
-              height: "30px",
-              fontSize: "14px",
-              borderTop: "0", // Remove top border to eliminate space
-              borderLeft: "1px solid #ccc",
-              borderRight: "1px solid #ccc",
-              borderBottom: "1px solid #ccc",
-            }}
-            aria-label="Confirm entries"
           >
-            Confirm
-          </Button>
-        </div>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Enter a stock"
+              style={{
+                fontSize: "14px",
+                borderRadius: "10px",
+                border: "1px solid #ccc",
+                padding: "10px",
+                width: "100%",
+              }}
+            />
+
+            <input
+              type="text"
+              value={quantity}
+              onChange={handleQuantityChange}
+              placeholder="Quantity"
+              style={{
+                fontSize: "14px",
+                borderRadius: "10px",
+                border: "1px solid #ccc",
+                padding: "10px",
+                width: "100%",
+              }}
+            />
+
+            <Button
+              onClick={handleAddStock}
+              style={{
+                borderRadius: "10px",
+                padding: "10px 20px",
+                width: "100%",
+              }}
+            >
+              Confirm
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

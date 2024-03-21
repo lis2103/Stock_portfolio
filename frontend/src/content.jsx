@@ -70,14 +70,15 @@ const Content = ({ marginTop = "20px" }) => {
           width: "100%",
           maxWidth: "800px",
           textAlign: "center",
-          color: "green", // Adjust the color for the summary page
-          background: "purple", // Light background color for contrast
+          color: "green",
+          background: "purple",
           padding: "20px",
           borderRadius: "8px",
           boxShadow: "0 4px 14px 0 rgba(0,0,0,0.1)",
         }}
       >
         <h1> LISTOCK</h1>
+        <h1> STOCKS CHART LOADING</h1>
       </div>
     );
   }

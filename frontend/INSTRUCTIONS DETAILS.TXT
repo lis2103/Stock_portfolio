@@ -1,0 +1,5 @@
+You can register using the register buttin and also loggin
+By clicking BYE tou can log out
+you cann add all stocks and remove after you add one by putting your cersor ver the box and sligtly right until the remove button appears
+I tried to display but sometimes is not updated.
+I have used many techniques for each part that is not fully fuctional and i have leave my code in my compartments so you can see the try for implementation.!

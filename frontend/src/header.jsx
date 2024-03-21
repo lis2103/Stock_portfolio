@@ -9,35 +9,46 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("User object:", user);
-    if (!user) {
-      console.error("User ID is not available.");
-      return;
-    }
+    const fetchTotalPortfolioValue = () => {
+      console.log("User object:", user);
+      if (!user) {
+        console.error("User ID is not available.");
+        return;
+      }
 
-    console.log("User ID is", user.id); // Move inside useEffect to access user object
+      fetch(
+        `https://mcsbt-integration-416413.lm.r.appspot.com/${user.username}`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch portfolio value");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setTotalValue(data.total_portfolio_value);
+        })
+        .catch((error) => {
+          console.error("Error fetching total portfolio value:", error);
+          setTotalValue("0");
+        });
+    };
 
-    fetch(`https://mcsbt-integration-vr.ew.r.appspot.com/${user.username}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch portfolio value");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTotalValue(data.total_portfolio_value);
-      })
-      .catch((error) => {
-        console.error("Error fetching total portfolio value:", error);
-        setTotalValue("0");
-      });
+    // Call fetchTotalPortfolioValue immediately to fetch the initial value
+    fetchTotalPortfolioValue();
+
+    // Set up an interval to fetch the value every 30 seconds
+    const intervalId = setInterval(fetchTotalPortfolioValue, 30000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, [user]);
 
   const handleLogout = async () => {
     // Optionally make a logout API call to your backend
     try {
       const response = await fetch(
-        "https://mcsbt-integration-vr.ew.r.appspot.com/logout",
+        "https://mcsbt-integration-416413.lm.r.appspot.com/logout",
         {
           method: "GET",
           headers: {
@@ -105,7 +116,7 @@ const Header = () => {
           fontSize: "30px",
         }}
       >
-        WELCOME TO YOUR PORTFOLIO
+        STOCKS PORTFOLIO
       </h1>
 
       <div
