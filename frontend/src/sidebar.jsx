@@ -17,7 +17,7 @@ export default function Sidebar() {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://mcsbt-integration-416413.lm.r.appspot.com/portfolio/${user.username}`
+        `https://https://mcsbt-integration-vr.ew.r.appspot.com//portfolio/${user.username}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -33,7 +33,7 @@ export default function Sidebar() {
 
       const promises = portfolioItems.map((item) =>
         fetch(
-          `https://mcsbt-integration-416413.lm.r.appspot.com/${item.ticker}`
+          `https://https://mcsbt-integration-vr.ew.r.appspot.com//${item.ticker}`
         ).then((response) => response.json())
       );
 
@@ -61,7 +61,7 @@ export default function Sidebar() {
   const handleAddStock = async () => {
     try {
       const response = await fetch(
-        `https://mcsbt-integration-416413.lm.r.appspot.com/add-stock/${user.username}/${inputValue}/${quantity}`,
+        `https://https://mcsbt-integration-vr.ew.r.appspot.com//add-stock/${user.username}/${inputValue}/${quantity}`,
         {
           method: "POST",
           headers: {
@@ -89,7 +89,7 @@ export default function Sidebar() {
   const handleRemoveStock = async (ticker) => {
     try {
       const response = await fetch(
-        `https://mcsbt-integration-416413.lm.r.appspot.com/remove-stock/${user.username}/${ticker}`,
+        `https://mcsbt-integration-vr.ew.r.appspot.com//remove-stock/${user.username}/${ticker}`,
         {
           method: "DELETE",
           headers: {

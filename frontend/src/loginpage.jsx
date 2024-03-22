@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     try {
       const response = await fetch(
-        "https://mcsbt-integration-416413.lm.r.appspot.com/login",
+        "https://mcsbt-integration-vr.ew.r.appspot.com//login",
         {
           method: "POST",
           headers: {

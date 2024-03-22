@@ -26,7 +26,7 @@ const RegisterPage = () => {
 
     try {
       const response = await fetch(
-        "https://mcsbt-integration-416413.lm.r.appspot.com/register",
+        "https://https://mcsbt-integration-vr.ew.r.appspot.com//register",
         {
           method: "POST",
           headers: {

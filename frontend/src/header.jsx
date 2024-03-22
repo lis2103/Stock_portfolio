@@ -16,9 +16,7 @@ const Header = () => {
         return;
       }
 
-      fetch(
-        `https://mcsbt-integration-416413.lm.r.appspot.com/${user.username}`
-      )
+      fetch(`hhttps://mcsbt-integration-vr.ew.r.appspot.com//${user.username}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Failed to fetch portfolio value");
@@ -48,7 +46,7 @@ const Header = () => {
     // Optionally make a logout API call to your backend
     try {
       const response = await fetch(
-        "https://mcsbt-integration-416413.lm.r.appspot.com/logout",
+        "https://mcsbt-integration-vr.ew.r.appspot.com/logout",
         {
           method: "GET",
           headers: {
